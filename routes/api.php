@@ -23,6 +23,9 @@ Route::group(['prefix' => 'v1'], function () {
     Route::apiResource('user', UserController::class);
 });
 
+Route::get('/eee', function () {
+    return 'opa';
+});
 
 Route::get('/', function () {
     return 'opa';
