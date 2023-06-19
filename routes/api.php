@@ -9,5 +9,5 @@ Route::group(['prefix' => 'v1'], function () {
         Route::apiResource('expenses', ExpensesController::class);
     });
 });
-
+Route::apiResource('users', UserController::class);
 Route::post('login', [UserController::class, 'authUser'])->name('login');

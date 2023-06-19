@@ -8,6 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 interface ContractRepository
 {
     public function findById(int $id): Model;
-
-    public function findAll(): Collection;
 }
