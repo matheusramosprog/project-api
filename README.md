@@ -21,6 +21,15 @@ Rotas Autenticadoas tem o seguinte icon: :lock:
 - Accept application/json
 - content-type application/json
 
+### Envio de email com Queue
+- O serviço utilizado para o envio de e-mail foi o Mailtrap.
+- Para realizar o envio de teste basta criar uma conta [https://mailtrap.io/] e substituir as informações no arquivo .env do projeto.
+- Os e-mails estão sendo colocados na fila para envio após um novo cadastro de despesa ser realizado com sucesso.
+- Para rodas a fila e realizar o envio basta rodar o comando:
+ ```sh
+- php artisan queue:work
+```
+
 ## Summary
 
   ### API 1.0
