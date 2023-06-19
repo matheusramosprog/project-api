@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
+use App\Providers\RepositoryServiceProvider;
 
 return [
 
@@ -156,18 +157,12 @@ return [
     */
 
     'providers' => ServiceProvider::defaultProviders()->merge([
-        /*
-         * Package Service Providers...
-         */
-
-        /*
-         * Application Service Providers...
-         */
+        RepositoryServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
     ])->toArray(),
 
     /*
