@@ -5,12 +5,13 @@ namespace App\Repository\V1;
 use App\Repository\Interfaces\Expenses as Contract;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Expenses extends Repository implements Contract
 {
     public function index(): Collection
     {
-        return $this->findAll();
+        return $this->model::where('user_id', Auth::guard('api')->user()->id)->get();
     }
 
     public function show(int $id): Model
