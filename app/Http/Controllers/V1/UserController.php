@@ -5,62 +5,45 @@ namespace App\Http\Controllers\V1;
 use App\Http\Controllers\V1\Controller;
 use Illuminate\Http\Request;
 use App\Models\V1\User;
+use Illuminate\Http\Response;
+use App\Http\Resources\V1\AuthUserResource;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         return User::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return 'um';
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        return 'dois';
+        User::create($request->all());
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        return 'tres';
+        return User::findOrFail($id);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        return 'quatro';
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        return 'cinco';
+        $expense = User::findOrFail($id);
+        $expense->update($request->all());
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        return 'seis';
+        $expense = User::findOrFail($id);
+        $expense->delete();
+    }
+
+    public function authUser(Request $request): AuthUserResource
+    {
+        $credentials = $request->only(['email', 'password']);
+        if (!$token = auth()->attempt($credentials)) {
+            abort(Response::HTTP_UNAUTHORIZED, 'Unauthorized');
+        }
+
+        return new AuthUserResource(["token" => $token]);
     }
 }
