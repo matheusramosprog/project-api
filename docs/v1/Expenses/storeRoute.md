@@ -31,7 +31,6 @@ Os seguintes requisitos estão sendo validados:
  - Se a data que será cadastrada não é maior que a data atual;
  - Se o valor cadastrado nẽo é negativo;
 
-
 **Envio de e-mail:**
 
 Um email é enviado quando a despesa é cadastrada com sucesso para o e-mail do usuário autenticado no sistema.
